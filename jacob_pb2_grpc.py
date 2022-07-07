@@ -25,6 +25,11 @@ class GreeterStub(object):
                 request_serializer=jacob__pb2.HelloRequestStream.SerializeToString,
                 response_deserializer=jacob__pb2.HelloReply.FromString,
                 )
+        self.camStream = channel.unary_stream(
+                '/jacob.Greeter/camStream',
+                request_serializer=jacob__pb2.HelloRequest.SerializeToString,
+                response_deserializer=jacob__pb2.Frame.FromString,
+                )
 
 
 class GreeterServicer(object):
@@ -44,6 +49,12 @@ class GreeterServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def camStream(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_GreeterServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -56,6 +67,11 @@ def add_GreeterServicer_to_server(servicer, server):
                     servicer.SayHelloStream,
                     request_deserializer=jacob__pb2.HelloRequestStream.FromString,
                     response_serializer=jacob__pb2.HelloReply.SerializeToString,
+            ),
+            'camStream': grpc.unary_stream_rpc_method_handler(
+                    servicer.camStream,
+                    request_deserializer=jacob__pb2.HelloRequest.FromString,
+                    response_serializer=jacob__pb2.Frame.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -99,5 +115,22 @@ class Greeter(object):
         return grpc.experimental.unary_stream(request, target, '/jacob.Greeter/SayHelloStream',
             jacob__pb2.HelloRequestStream.SerializeToString,
             jacob__pb2.HelloReply.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def camStream(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_stream(request, target, '/jacob.Greeter/camStream',
+            jacob__pb2.HelloRequest.SerializeToString,
+            jacob__pb2.Frame.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

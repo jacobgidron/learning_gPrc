@@ -14,13 +14,15 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0bjacob.proto\x12\x05jacob\"\x1c\n\x0cHelloRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"\"\n\x12HelloRequestStream\x12\x0c\n\x04name\x18\x01 \x01(\t\"\x1d\n\nHelloReply\x12\x0f\n\x07message\x18\x01 \x01(\t2\x83\x01\n\x07Greeter\x12\x34\n\x08SayHello\x12\x13.jacob.HelloRequest\x1a\x11.jacob.HelloReply\"\x00\x12\x42\n\x0eSayHelloStream\x12\x19.jacob.HelloRequestStream\x1a\x11.jacob.HelloReply\"\x00\x30\x01\x42\'\n\x1bio.grpc.examples.helloworldB\x00P\x01\xa2\x02\x03HLWb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0bjacob.proto\x12\x05jacob\"\x1c\n\x0cHelloRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"\"\n\x12HelloRequestStream\x12\x0c\n\x04name\x18\x01 \x01(\t\"\x1d\n\nHelloReply\x12\x0f\n\x07message\x18\x01 \x01(\t\"\x1e\n\x0bHelloReplyS\x12\x0f\n\x07message\x18\x01 \x01(\t\"\x14\n\x05\x46rame\x12\x0b\n\x03img\x18\x01 \x01(\x0c\x32\xb7\x01\n\x07Greeter\x12\x34\n\x08SayHello\x12\x13.jacob.HelloRequest\x1a\x11.jacob.HelloReply\"\x00\x12\x42\n\x0eSayHelloStream\x12\x19.jacob.HelloRequestStream\x1a\x11.jacob.HelloReply\"\x00\x30\x01\x12\x32\n\tcamStream\x12\x13.jacob.HelloRequest\x1a\x0c.jacob.Frame\"\x00\x30\x01\x42\'\n\x1bio.grpc.examples.helloworldB\x00P\x01\xa2\x02\x03HLWb\x06proto3')
 
 
 
 _HELLOREQUEST = DESCRIPTOR.message_types_by_name['HelloRequest']
 _HELLOREQUESTSTREAM = DESCRIPTOR.message_types_by_name['HelloRequestStream']
 _HELLOREPLY = DESCRIPTOR.message_types_by_name['HelloReply']
+_HELLOREPLYS = DESCRIPTOR.message_types_by_name['HelloReplyS']
+_FRAME = DESCRIPTOR.message_types_by_name['Frame']
 HelloRequest = _reflection.GeneratedProtocolMessageType('HelloRequest', (_message.Message,), {
   'DESCRIPTOR' : _HELLOREQUEST,
   '__module__' : 'jacob_pb2'
@@ -42,6 +44,20 @@ HelloReply = _reflection.GeneratedProtocolMessageType('HelloReply', (_message.Me
   })
 _sym_db.RegisterMessage(HelloReply)
 
+HelloReplyS = _reflection.GeneratedProtocolMessageType('HelloReplyS', (_message.Message,), {
+  'DESCRIPTOR' : _HELLOREPLYS,
+  '__module__' : 'jacob_pb2'
+  # @@protoc_insertion_point(class_scope:jacob.HelloReplyS)
+  })
+_sym_db.RegisterMessage(HelloReplyS)
+
+Frame = _reflection.GeneratedProtocolMessageType('Frame', (_message.Message,), {
+  'DESCRIPTOR' : _FRAME,
+  '__module__' : 'jacob_pb2'
+  # @@protoc_insertion_point(class_scope:jacob.Frame)
+  })
+_sym_db.RegisterMessage(Frame)
+
 _GREETER = DESCRIPTOR.services_by_name['Greeter']
 if _descriptor._USE_C_DESCRIPTORS == False:
 
@@ -53,6 +69,10 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _HELLOREQUESTSTREAM._serialized_end=86
   _HELLOREPLY._serialized_start=88
   _HELLOREPLY._serialized_end=117
-  _GREETER._serialized_start=120
-  _GREETER._serialized_end=251
+  _HELLOREPLYS._serialized_start=119
+  _HELLOREPLYS._serialized_end=149
+  _FRAME._serialized_start=151
+  _FRAME._serialized_end=171
+  _GREETER._serialized_start=174
+  _GREETER._serialized_end=357
 # @@protoc_insertion_point(module_scope)

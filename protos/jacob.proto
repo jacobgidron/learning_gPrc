@@ -26,6 +26,7 @@ service Greeter {
   // Sends a greeting
   rpc SayHello (HelloRequest) returns (HelloReply) {}
   rpc SayHelloStream (HelloRequestStream) returns (stream HelloReply) {}
+  rpc camStream (HelloRequestStream) returns (stream Frame) {}
 }
 
 // The request message containing the user's name.
@@ -43,5 +44,7 @@ message HelloReply {
 
 message HelloReplyS {
   string message = 1;
-  float [] frame = 2
+}
+message Frame{
+  bytes img = 1;
 }
